@@ -16,26 +16,28 @@ int romanToInt(std::string& str)
     uint32_t i = 0U;
     for (i = 0; i < str.length(); i++)
     {
+        std::cout << symToInt[str[i]] << " ";
         /*If present value is less than next value,
           subtract present from next value and add the
           resultant to the sum variable.
           CM ==> 900 case
           */
-        if (symToInt[str[i]] > symToInt[str[i + 1]])
+        if (symToInt[str[i]] < symToInt[str[i + 1]])
         {
+            std::cout << "Entered Inside: " << std::endl;
             sum += symToInt[str[i + 1]] - symToInt[str[i]];
             i++;
             continue;
-        }
+        }        
         sum += symToInt[str[i]];
     }
     return sum;
 }
 
 int main(){ 
-    std::string str = "MCMXCIV";
-    std::cout << "getRoman(" << str << ")" << romanToInt(str) << std::endl;
-    str = "III";
+    //std::string str = "MCMXCIV";
+    //std::cout << "getRoman(" << str << ")" << romanToInt(str) << std::endl;
+    std::string str = "III";
     std::cout << "getRoman(" << str << ")" << romanToInt(str) << std::endl;
     return 0;
 }
